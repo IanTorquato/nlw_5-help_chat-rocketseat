@@ -12,11 +12,11 @@ export class Settings {
   @PrimaryColumn({ name: 'settings_id' })
   id: string
 
-  @Column()
+  @Column({ unique: true })
   username: string
 
-  @Column()
-  chat: string
+  @Column({ default: true })
+  chat: boolean
 
   @CreateDateColumn()
   created_at: Date
