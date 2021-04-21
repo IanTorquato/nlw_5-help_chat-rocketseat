@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 @Entity('settings')
 export class Settings {
   constructor() {
-    if (this.id) {
+    if (!this.id) {
       this.id = uuid()
     }
   }
