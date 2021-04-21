@@ -1,0 +1,3 @@
+interface UserCreate {
+  email: string
+}
