@@ -10,4 +10,10 @@ export class MessagesService {
 
     return await messageRepository.save(message)
   }
+
+  async findByUser(userId: string) {
+    const messageRepository = getCustomRepository(MessagesRepository)
+
+    return await messageRepository.find({ where: { userId }, relations: ['user'] })
+  }
 }

@@ -18,4 +18,14 @@ export class MessagesController {
       return response.status(400).json({ error: error.message })
     }
   }
+
+  async findByUser(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params
+
+    const messagesService = new MessagesService()
+
+    const messages = await messagesService.findByUser(id)
+
+    return response.json(messages)
+  }
 }
