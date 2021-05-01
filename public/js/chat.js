@@ -1,4 +1,6 @@
 document.querySelector('#start_chat').addEventListener('click', (event) => {
+  const socket = io()
+
   const chat_help = document.getElementById('chat_help')
   chat_help.style.display = 'none'
 
@@ -7,4 +9,11 @@ document.querySelector('#start_chat').addEventListener('click', (event) => {
 
   const email = document.getElementById('email').value
   const text = document.getElementById('txt_help').value
+
+  socket.on('connect', () => {
+    socket.emit('client_first_access', { email, text }, (call, err) => {
+      if (err) { console.log(err) }
+      else { console.log(call) }
+    })
+  })
 });
